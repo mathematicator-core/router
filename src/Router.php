@@ -65,6 +65,7 @@ class Router
 		$this->regexRoute('-?[0-9]*[.]?[0-9]+([Ee]\d+)?', NumberController::class);
 		$this->regexRoute('\d+\/\d+', NumberController::class);
 		$this->regexRoute('[IVXLCDMivxlcdm]{2,}', NumberController::class);
+		$this->staticRoute(['pi', 'ludolfovo cislo'], NumberController::class);
 		$this->regexRoute('A\d{6}', OEISController::class);
 		$this->tokenizeRoute(NumberCounterController::class);
 		$this->regexRoute('now|\d{1,2}\.\d{1,2}\.\d{4}|\d{4}-\d{1,2}-\d{1,2}', DateController::class);
@@ -106,7 +107,7 @@ class Router
 		static $queryCache = [];
 
 		if (isset($queryCache[$this->query]) === false) {
-			$queryCache[$this->query] = trim(Strings::toAscii($this->query));
+			$queryCache[$this->query] = strtolower(trim(Strings::toAscii($this->query)));
 		}
 
 		if (\in_array($queryCache[$this->query], $queries, true) === true) {
