@@ -9,12 +9,14 @@ use Mathematicator\Engine\TerminateException;
 use Mathematicator\SearchController\CrossMultiplicationController;
 use Mathematicator\SearchController\DateController;
 use Mathematicator\SearchController\ErrorTooLongController;
+use Mathematicator\SearchController\IntegralController;
 use Mathematicator\SearchController\MandelbrotSetController;
 use Mathematicator\SearchController\NumberController;
 use Mathematicator\SearchController\NumberCounterController;
 use Mathematicator\SearchController\OEISController;
 use Mathematicator\SearchController\OtherController;
 use Mathematicator\SearchController\SequenceController;
+use Mathematicator\SearchController\TreeController;
 use Nette\Utils\Strings;
 
 class Router
@@ -62,6 +64,8 @@ class Router
 	private function process(): void
 	{
 		$this->tooLongQueryRoute(ErrorTooLongController::class);
+		$this->regexRoute('(?:strom|tree)\s+.+', TreeController::class);
+		$this->regexRoute('integr(?:a|á)l\s+.+', IntegralController::class);
 		$this->regexRoute('-?[0-9]*[.]?[0-9]+([Ee]\d+)?', NumberController::class);
 		$this->regexRoute('\d+\/\d+', NumberController::class);
 		$this->regexRoute('[IVXLCDMivxlcdm]{2,}', NumberController::class);
