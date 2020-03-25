@@ -22,15 +22,12 @@ use Nette\Utils\Strings;
 class Router
 {
 
-	/**
-	 * @var string
-	 */
+	/** @var string */
 	private $query;
 
-	/**
-	 * @var string[]
-	 */
+	/** @var string[] */
 	private $functions;
+
 
 	/**
 	 * @param string[] $functions
@@ -39,6 +36,7 @@ class Router
 	{
 		$this->functions = $functions;
 	}
+
 
 	/**
 	 * @param string $query
@@ -57,6 +55,7 @@ class Router
 
 		return $route;
 	}
+
 
 	/**
 	 * @throws TerminateException
@@ -79,6 +78,7 @@ class Router
 		$this->staticRoute(['trojclenka'], CrossMultiplicationController::class);
 	}
 
+
 	/**
 	 * @param string $entity
 	 * @throws TerminateException
@@ -89,6 +89,7 @@ class Router
 			throw new TerminateException($entity);
 		}
 	}
+
 
 	/**
 	 * @param string $regex
@@ -101,6 +102,7 @@ class Router
 			throw new TerminateException($entity);
 		}
 	}
+
 
 	/**
 	 * @param string[] $queries
@@ -120,6 +122,7 @@ class Router
 		}
 	}
 
+
 	/**
 	 * @param string $entity
 	 * @throws TerminateException
@@ -130,5 +133,4 @@ class Router
 			throw new TerminateException($entity);
 		}
 	}
-
 }
