@@ -1,8 +1,6 @@
 Mathematicator search router
 ============================
 
-Internal router component used in Mathematicator/VikiTron math search engine.
+`This package is deprecated`.
 
-Online demo: http://vikitron.com
-
-> Please help improve this documentation by sending a Pull request.
+Router was moved to [mathematicator-core/engine](https://github.com/mathematicator-core/engine).
